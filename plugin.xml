@@ -24,7 +24,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-local-notification"
-        version="0.9.3-bf-1.1">
+        version="0.9.3-bf-1.2">
 
     <name>LocalNotification</name>
 
@@ -44,7 +44,7 @@
         <engine name="cordova-plugman" version=">=4.3.0"  />
         <engine name="cordova-android" version=">=6.0.0"  />
         <engine name="cordova-windows" version=">=4.2.0"  />
-        <engine name="android-sdk"     version=">=26" />
+        <!-- <engine name="android-sdk"     version=">=26" /> -->
         <engine name="apple-ios"       version=">=10.0.0" />
     </engines>
 
@@ -99,7 +99,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <provider
                 android:name="de.appplant.cordova.plugin.notification.util.AssetProvider"
-                android:authorities="${applicationId}.provider"
+                android:authorities="${applicationId}.localnotifications.provider"
                 android:exported="false"
                 android:grantUriPermissions="true" >
                 <meta-data
