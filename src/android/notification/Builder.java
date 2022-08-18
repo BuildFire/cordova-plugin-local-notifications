@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.MessagingStyle.Message;
@@ -324,8 +325,12 @@ public final class Builder {
 
         int reqCode = random.nextInt();
 
+        int flags = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                ? PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE
+                : PendingIntent.FLAG_UPDATE_CURRENT;
+
         PendingIntent deleteIntent = PendingIntent.getBroadcast(
-                context, reqCode, intent, FLAG_UPDATE_CURRENT);
+                context, reqCode, intent, flags);
 
         builder.setDeleteIntent(deleteIntent);
     }
@@ -353,8 +358,12 @@ public final class Builder {
 
         int reqCode = random.nextInt();
 
+        int flags = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                ? PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE
+                : PendingIntent.FLAG_UPDATE_CURRENT;
+        
         PendingIntent contentIntent = PendingIntent.getActivity(
-                context, reqCode, intent, FLAG_UPDATE_CURRENT);
+                context, reqCode, intent, flags);
 
         builder.setContentIntent(contentIntent);
     }
@@ -403,8 +412,12 @@ public final class Builder {
 
         int reqCode = random.nextInt();
 
+        int flags = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                ? PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_MUTABLE
+                : PendingIntent.FLAG_CANCEL_CURRENT;
+        
         return PendingIntent.getActivity(
-                context, reqCode, intent, FLAG_CANCEL_CURRENT);
+                context, reqCode, intent, flags);
     }
 
     /**
