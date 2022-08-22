@@ -24,7 +24,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-local-notification"
-        version="0.9.3-bf-1.2">
+        version="0.9.3-bf-1.3">
 
     <name>LocalNotification</name>
 
@@ -50,7 +50,7 @@
 
     <!-- dependencies -->
     <dependency id="cordova-plugin-device" />
-    <dependency id="cordova-plugin-badge" version=">=0.8.5" />
+    <dependency id="cordova-plugin-badge" url="https://github.com/katzer/cordova-plugin-badge" commit="8e870f7f358d9435180f92dba4d2fc3b7f52bb4f" source="git" />
 
     <!-- js -->
     <js-module src="www/local-notification.js" name="LocalNotification">
@@ -135,6 +135,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
+						   <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
         </config-file>
 
         <source-file
